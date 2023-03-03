@@ -19,9 +19,9 @@ router.get('/', (req, res) => {
   res.end();
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
-// router.post('/', (req, res) => res.json({ postBody: req.body }));
+router.post('/', (req, res) => res.json({ postBody: req.body }));
 
-router.post('/', async (req, res) => {
+router.post('/chat', async (req, res) => {
     try {
         console.log(req.body);
         const { messages } = req.body;
@@ -38,7 +38,8 @@ router.post('/', async (req, res) => {
 });
 
 app.use(bodyParser.json());
-app.use('/.netlify/functions/server', router);  // path must route to lambda
+// app.use('/.netlify/functions/server', router);  // path must route to lambda
+app.use('/', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 module.exports = app;
