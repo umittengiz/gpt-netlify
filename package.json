@@ -2,11 +2,10 @@
   "name": "gpt35",
   "version": "1.0.0",
   "description": "",
-  "main": "handler.js",
+  "main": "functions/server.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "build": "netlify-lambda build express",
+    "start": "nodemon server-local.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,9 +16,10 @@
     "serverless-http": "*"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.24.2"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "netlify-lambda": "^1.6.3",
+    "nodemon": "^1.19.2",
+    "serverless-http": "^2.3.0"
   }
 }
