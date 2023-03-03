@@ -18,6 +18,12 @@ router.get('/', (req, res) => {
   res.write('<h1>Hello from Express.js!</h1>');
   res.end();
 });
+router.get('/robots.txt', (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.write('User-agent: *');
+  res.write('Disallow: /');
+  res.end();
+});
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
 router.post('/', (req, res) => res.json({ data: req.body }));
 
